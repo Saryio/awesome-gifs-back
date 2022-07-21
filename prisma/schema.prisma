@@ -19,7 +19,7 @@ model User {
 model Gif {
   id                   Int     @id @default(autoincrement())
   external_url         String
-  internal_url         String
+  internal_url         String?
   title                String
   hidden               Boolean @default(false)
   author               User    @relation(fields: [authorWallet_address], references: [wallet_address])
