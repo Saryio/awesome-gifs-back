@@ -17,8 +17,10 @@ export class UserService {
     return await this.userRepository.users({});
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findOne(wallet_address: string) {
+    return this.userRepository.user({
+      wallet_address,
+    });
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
