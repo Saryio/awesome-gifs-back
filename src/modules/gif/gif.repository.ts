@@ -6,7 +6,7 @@ import { Prisma, Gif } from '@prisma/client';
 export class GifRepository {
   constructor(private prisma: PrismaService) {}
 
-  async gif(
+  async getSome(
     userWhereUniqueInput: Prisma.GifWhereUniqueInput,
   ): Promise<Gif | null> {
     return this.prisma.gif.findUnique({
@@ -14,7 +14,7 @@ export class GifRepository {
     });
   }
 
-  async gifs(params: {
+  async get(params: {
     skip?: number;
     take?: number;
     cursor?: Prisma.GifWhereUniqueInput;
@@ -31,7 +31,7 @@ export class GifRepository {
     });
   }
 
-  async createGif(data: Prisma.GifCreateInput): Promise<Gif> {
+  async create(data: Prisma.GifCreateInput): Promise<Gif> {
     data = {
       ...data,
       internal_url: 'http://teste.com',
@@ -42,7 +42,7 @@ export class GifRepository {
     });
   }
 
-  async deleteGif(where: Prisma.GifWhereUniqueInput): Promise<Gif> {
+  async delete(where: Prisma.GifWhereUniqueInput): Promise<Gif> {
     return this.prisma.gif.delete({
       where,
     });
