@@ -15,8 +15,8 @@ export class GifController {
   constructor(private readonly gifService: GifService) {}
 
   @Post()
-  create(@Body() createGifDto: CreateGifDto, @Body() actualId: string) {
-    return this.gifService.create(createGifDto, actualId);
+  create(@Body() createGifDto: CreateGifDto) {
+    return this.gifService.create(createGifDto);
   }
 
   @Get()
@@ -29,8 +29,8 @@ export class GifController {
     return this.gifService.findOne(+id);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.gifService.remove(+id);
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string) {
+  //   return this.gifService.remove(+id);
+  // }
 }
